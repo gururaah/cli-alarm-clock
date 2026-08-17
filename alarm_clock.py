@@ -35,10 +35,10 @@ class AlarmClock:
             self.is_ringing = True
 
         print("\n\n" + "="*50)
-        print(f"🚨 WEE-WOO WEE-WOO! ALARM RINGING! [{alarm['label']}] 🚨")
+        print(f"WEE-WOO WEE-WOO! ALARM RINGING! [{alarm['label']}] 🚨")
         print("="*50)
-        print("👉 Press 'd' + Enter to Dismiss")
-        print("👉 Press 's' + Enter to Snooze (5 mins)")
+        print("Press 'd' + Enter to Dismiss")
+        print("Press 's' + Enter to Snooze (5 mins)")
         print("="*50)
 
         # Flag to control continuous beeping until user responds
@@ -62,14 +62,14 @@ class AlarmClock:
                 action = input("Enter choice ('d' / 's'): ").strip().lower()
                 
                 if action == 'd':
-                    stop_beeping.set() # Stop the beep loop
+                    stop_beeping.set() 
                     with self.lock:
                         alarm['active'] = False
                         self.is_ringing = False
                     print("[INFO] Alarm dismissed successfully.\n")
                     break
                 elif action == 's':
-                    stop_beeping.set() # Stop the beep loop
+                    stop_beeping.set() 
                     now = datetime.datetime.now()
                     new_time = (now + datetime.timedelta(minutes=5)).time()
                     with self.lock:
